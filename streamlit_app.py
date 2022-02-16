@@ -17,7 +17,7 @@ def read_markdown_file(markdown_file):
 def info2dict(info):
     words = info.strip().split(',')
     words = [word.split(':') for word in words]
-    words = {k:v for k, v in words}
+    words = dict(words)
     return words
 
 @st.cache
@@ -43,7 +43,7 @@ intro_markdown = read_markdown_file("intro.md")
 st.markdown(intro_markdown, unsafe_allow_html=True)
 
 
-devices = [device for device in list_ports.grep('COM')]
+devices = list(list_ports.grep('COM'))
 device_names = [str(device) for device in devices]
 config_col, table_col = st.beta_columns(2)
 
