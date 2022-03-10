@@ -11,7 +11,7 @@ def read_markdown_file(markdown_file):
 intro_markdown = read_markdown_file("intro.md")
 st.markdown(intro_markdown, unsafe_allow_html=True)
 
-devices = [device for device in list_ports.grep('COM')]
+devices = list(list_ports.grep('COM'))
 device_names = [str(device) for device in devices]
 
 device_name = st.selectbox(label="选择端口设备", options=device_names)
